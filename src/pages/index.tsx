@@ -6,6 +6,7 @@ import CompletedChallenges from '../components/CompletedChallenges';
 import CountDown from '../components/CountDown';
 import ExperienceBar from '../components/ExperienceBar';
 import Profile from '../components/Profile';
+import ChallengeBox from '../components/ChallengeBox';
 
 import styles from '../styles/index.module.css';
 
@@ -24,7 +25,7 @@ const Home:React.FC = () => (
 			</div>
 
 			<div>
-
+				<ChallengeBox />
 			</div>
 		</section>
 	</div>
