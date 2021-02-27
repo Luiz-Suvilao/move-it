@@ -29,5 +29,5 @@
 		],
 		"import/prefer-default-export": "off",
 		"tsx-quotes": ["error", "prefer-single"]
-	  }
+	}
 }
