@@ -53,7 +53,11 @@ const CountDown: React.FC = () => {
 					disabled
 					className={ styles.startButton }
 				>
-					Ciclo encerrado
+					Contagem encerrada!
+					<img
+						src="/icons/check.svg"
+						alt="Imagem de sucesso! Contagem encerrada"
+					/>
 				</button>) : (
 					<>
 						{
@@ -63,7 +67,11 @@ const CountDown: React.FC = () => {
 								className={ `${styles.startButton} ${styles.startButtonActive}` }
 								onClick={ resetCountDown }
 							>
-								Abandonar contagem!
+								Abandonar!
+								<img
+									src="/icons/close.svg"
+									alt="Símbolo de fechar. Encerrar contagem"
+								/>
 							</button>
 							) : (<button
 									type="button"
@@ -71,6 +79,10 @@ const CountDown: React.FC = () => {
 									onClick={ () => setIsActive(true) }
 								>
 									Iniciar!
+									<img
+										src="/icons/play.svg"
+										alt="Símbolo de play. Iniciar contangem"
+									/>
 								</button>)
 						}
 					</>

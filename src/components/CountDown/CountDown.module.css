@@ -50,6 +50,7 @@
 .startButtonActive {
 	background-color: var(--white);
 	color: var(--text);
+	border-bottom: 5px solid var(--red);
 }
 
 .startButtonActive:not(:disabled):hover {
@@ -61,4 +62,7 @@
 	background: var(--white);
 	cursor: not-allowed;
 	color: var(--text);
+	border-bottom: 5px solid var(--green);
 }
+
+.startButton:disabled > img { margin-left: 10px; }
