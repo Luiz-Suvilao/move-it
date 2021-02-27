@@ -1,4 +1,5 @@
 import React from 'react';
+import CompletedChallenges from '../components/CompletedChallenges';
 
 import ExperienceBar from '../components/ExperienceBar';
 import Profile from '../components/Profile';
@@ -10,8 +11,9 @@ const Home:React.FC = () => (
 		<ExperienceBar />
 
 		<section>
-			<div className=''>
+			<div>
 				<Profile />
+				<CompletedChallenges />
 			</div>
 
 			<div>
