@@ -1,16 +1,69 @@
 .container {
-	height: 100vh;
-	max-width: 992px;
-	margin: 0 auto;
-	padding: 2.5rem 2rem;
 	display: flex;
-	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	height: 100vh;
+	background-color: var(--blue);
 }
 
-.container section {
-	flex: 1;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 6.25rem;
-	align-content: center;
+.logoContainer img { width: 60vh; }
+
+.loginContainer h1 {
+	margin-top: 2.5rem;
+	color: var(--white);
+}
+
+.info {
+	display: flex;
+	margin-top: 2.5rem;
+	align-items: center;
+}
+
+.info img { margin-right: 10px; }
+
+.info p {
+	font-size: 1rem;
+	color: var(--white);
+}
+
+.wrapperInput {
+	display: flex;
+	align-items: flex-end;
+}
+
+.wrapperInput input {
+	width: 330px;
+	height: 4rem;
+	border-top-left-radius: 13px;
+	border-bottom-left-radius: 13px;
+	background-color: var(--blue-dark);
+	border: 0;
+	padding-left: 15px;
+	margin-top: 1.5rem;
+	color: var(--white);
+}
+
+.wrapperInput input::placeholder {
+	color: var(--white);
+	text-align: 10px;
+}
+
+.wrapperInput input::-webkit-input-placeholder {
+	color: var(--white);
+	text-align: 10px;
+}
+
+.wrapperInput input:-ms-input-placeholder {
+	color: var(--white);
+	text-align: 10px;
+}
+
+.wrapperInput button {
+	width: 80px;
+	height: 4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--green);
+	border: 0;
 }

@@ -3,13 +3,13 @@ import { createContext, useState, ReactNode, useEffect } from 'react';
 import Cookies from 'js-cookie';
 
 import challenges from '../../challenges.json';
-import LevelUpModal from '../components/LevelUpModal';
+import LevelUpModal from '../components/Modal';
 
 interface ChallengesProviderProps {
 	children: ReactNode;
-	challengesCompleted: number;
-	experience: number;
-	level: number;
+	challengesCompleted?: number;
+	experience?: number;
+	level?: number;
 };
 
 interface Challenge {
@@ -28,7 +28,7 @@ interface ChallengesContextData {
 	resetChallege: () => void;
 	experienceToNextLevel: number;
 	completeChallenge: () => void;
-	closeLevelUpModal: () => void;
+	closeModal: () => void;
 };
 
 export const ChallengesContext = createContext({} as ChallengesContextData);
@@ -51,7 +51,7 @@ export const ChallengesProvider:React.FC<ChallengesProviderProps> = ({
 		setIsLevelUpModalOpen(true);
 	};
 
-	const closeLevelUpModal = () => setIsLevelUpModalOpen(false)
+	const closeModal = () => setIsLevelUpModalOpen(false)
 
 	useEffect(() => {
 		Notification.requestPermission();
@@ -111,11 +111,20 @@ export const ChallengesProvider:React.FC<ChallengesProviderProps> = ({
 				resetChallege,
 				levelUp,
 				completeChallenge,
-				closeLevelUpModal
+				closeModal
 			} }
 		>
 			{ children }
-			{ isLevelUpModalOpen && <LevelUpModal /> }
+			{ isLevelUpModalOpen && <LevelUpModal
+					title="Parabéns!"
+					description={`Você alcançou um novo level.
+						consiga mais ${experienceToNextLevel}
+						de XP para avançar novamente.`
+					}
+					level={level}
+					close={closeModal}
+				/>
+			}
 		</ChallengesContext.Provider>
 	);
 }

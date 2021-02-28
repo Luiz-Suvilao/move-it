@@ -1,71 +1,85 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 
-import Head from 'next/head';
-import { GetServerSideProps } from 'next';
+import Router from 'next/router'
 
-import CompletedChallenges from '../components/CompletedChallenges';
-import CountDown from '../components/CountDown';
-import ExperienceBar from '../components/ExperienceBar';
-import Profile from '../components/Profile';
-import ChallengeBox from '../components/ChallengeBox';
+import { ChallengesContext, ChallengesProvider } from '../contexts/ChallengesContext';
 
 import styles from '../styles/index.module.css';
-import { CountDownProvider } from '../contexts/CountDownContext';
-import { ChallengesProvider } from '../contexts/ChallengesContext';
+import Modal from '../components/Modal';
 
-interface HomeProps {
-	challengesCompleted: number;
-	experience: number;
-	level: number;
-}
+const Login = () => {
+	const { closeModal } = useContext(ChallengesContext);
 
-const Home:React.FC<HomeProps> = ({
-	level,
-	challengesCompleted,
-	experience
-}) => (
-	<ChallengesProvider
-		level={ level }
-		experience={ experience }
-		challengesCompleted={ challengesCompleted }
-	>
-		<div className={ styles.container }>
-			<Head>
-				<title> Início | move.it </title>
-			</Head>
-			<ExperienceBar />
+	const [userName, setUserName] = useState('');
+	const [hasError, setHaserro] = useState(false);
 
-			<CountDownProvider>
-				<section>
-					<div>
-						<Profile />
-						<CompletedChallenges />
-						<CountDown />
-					</div>
-
-					<div>
-						<ChallengeBox />
-					</div>
-				</section>
-			</CountDownProvider>
-		</div>
-	</ChallengesProvider>
-);
-
-export const getServerSideProps:GetServerSideProps = async (ctx) => {
-	const {
-		level,
-		experience,
-		challengesCompleted
-	} = ctx.req.cookies;
-
-	return {
-		props: {
-			level: Number(level),
-			experience: Number(experience),
-			challengesCompleted: Number(challengesCompleted)
+	const goToHome = () => {
+		if (userName === '') {
+			setHaserro(true);
+			return
 		}
+
+		Router.push('/home');
 	}
+
+	return (
+		<ChallengesProvider >
+			<div className={ styles.container }>
+				<div className={ styles.logoContainer }>
+					<img
+						src="/icons/simbolo.svg"
+						alt="Símbolo da move.it. Logo lateral esquerda"
+					/>
+				</div>
+
+				<div className={ styles.loginContainer }>
+					<img
+						src="/icons/logo.svg"
+						alt="Símbolo da move.it. Logo lateral direita"
+					/>
+
+					<h1>Bem-vindo</h1>
+
+					<div className={ styles.info }>
+						<img
+							src="/icons/github.svg"
+							alt="Ícone do Github. Simbolizando um login com o mesmo"
+						/>
+
+						<p>
+							Faça login com o seu Github para começar
+						</p>
+					</div>
+
+					<div className={ styles.wrapperInput }>
+						<input
+							onChange={e => setUserName(e.target.value)}
+							value={ userName }
+							type='text'
+							placeholder='Username'
+						/>
+
+						<button
+							onClick={ goToHome }
+							type='button'
+						>
+							<img
+								src="icons/vector.svg"
+								alt="Ícone de umsa seta para direita. Simbolizando o avançar"
+							/>
+						</button>
+					</div>
+
+				</div>
+
+				{hasError && <Modal
+					close={ closeModal }
+					title='Error!'
+					description='O campo nome não pode ser vazio'
+				/>}
+			</div>
+		</ChallengesProvider>
+	);
 }
 
-export default Home;
+export default Login;
