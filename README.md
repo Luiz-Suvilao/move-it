@@ -21,4 +21,4 @@ E após realizar o login, haverá algo como isso:
 
 ![image](https://user-images.githubusercontent.com/46581510/109422279-a6d7c000-79b9-11eb-8a67-b1a59e7e415e.png)
 
-Com esses passos finalizamos a instalação do projeto
+Com esses passos finalizamos a instalação do projeto.
