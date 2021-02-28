@@ -13,6 +13,7 @@ import styles from '../styles/home.module.css';
 
 import { CountDownProvider } from '../contexts/CountDownContext';
 import { ChallengesProvider } from '../contexts/ChallengesContext';
+import { isAuthenticated } from '../helpers/isAuthenticated';
 
 interface HomeProps {
 	challengesCompleted: number;
@@ -59,6 +60,11 @@ export const getServerSideProps:GetServerSideProps = async (ctx) => {
 		experience,
 		challengesCompleted
 	} = ctx.req.cookies;
+
+	if (!isAuthenticated(ctx.req)) {
+		ctx.res.writeHead(303, { location: '/' });
+		ctx.res.end();
+	}
 
 	return {
 		props: {

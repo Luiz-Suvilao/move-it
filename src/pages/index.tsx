@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 
 import Router from 'next/router'
 
+import Cookies from 'js-cookie';
+
 import { ChallengesContext } from '../contexts/ChallengesContext';
 
 import styles from '../styles/index.module.css';
@@ -20,6 +22,7 @@ const Login = () => {
 			return
 		}
 
+		Cookies.set('userName', userName, { path: '/' });
 		Router.push('/home');
 	}
 
