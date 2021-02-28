@@ -11,7 +11,7 @@ Ainda no terminal executar o comando `npm run dev` parar subir o servidor local 
 
 Com isso vá para [sua aplicação local](http://localhost:3000/)
 
-Logo irá carregar na página principal que se parecerá com isso:
+Logo irá carregar a página principal que se parecerá com isso:
 
 ![image](https://user-images.githubusercontent.com/46581510/109422279-a6d7c000-79b9-11eb-8a67-b1a59e7e415e.png)
 
