@@ -29,6 +29,7 @@ interface ChallengesContextData {
 	experienceToNextLevel: number;
 	completeChallenge: () => void;
 	closeModal: () => void;
+	openModal: () => void;
 };
 
 export const ChallengesContext = createContext({} as ChallengesContextData);
@@ -43,15 +44,24 @@ export const ChallengesProvider:React.FC<ChallengesProviderProps> = ({
 	const [activeChallenge, setActiveChallenge] = useState(null);
 	const [difficulty, setDifficulty] = useState(4);
 	const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
+	const [isUpgrade, setIsUpgrade] = useState(false);
 
 	const experienceToNextLevel = Math.pow((level + 1) * difficulty, 2);
 
 	const levelUp = () => {
 		setLevel(level + 1);
 		setIsLevelUpModalOpen(true);
+		setIsUpgrade(true);
 	};
 
-	const closeModal = () => setIsLevelUpModalOpen(false)
+	const openModal = () => setIsLevelUpModalOpen(true);
+
+	const closeModal = () => setIsLevelUpModalOpen(false);
+
+	const closeModalLevelUp = () => {
+		setIsLevelUpModalOpen(false);
+		setIsUpgrade(false);
+	}
 
 	useEffect(() => {
 		Notification.requestPermission();
@@ -99,6 +109,8 @@ export const ChallengesProvider:React.FC<ChallengesProviderProps> = ({
 		setChallengesCompleted(challengesCompleted + 1);
 	}
 
+	const hasLevelUp = isUpgrade && isLevelUpModalOpen;
+
 	return (
 		<ChallengesContext.Provider
 			value={ {
@@ -111,18 +123,19 @@ export const ChallengesProvider:React.FC<ChallengesProviderProps> = ({
 				resetChallege,
 				levelUp,
 				completeChallenge,
-				closeModal
+				closeModal,
+				openModal,
 			} }
 		>
 			{ children }
-			{ isLevelUpModalOpen && <LevelUpModal
+			{ hasLevelUp && <LevelUpModal
 					title="Parabéns!"
 					description={`Você alcançou um novo level.
 						consiga mais ${experienceToNextLevel}
 						de XP para avançar novamente.`
 					}
 					level={level}
-					close={closeModal}
+					close={closeModalLevelUp}
 				/>
 			}
 		</ChallengesContext.Provider>

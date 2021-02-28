@@ -2,14 +2,14 @@ import React from 'react';
 
 import styles from './Modal.module.css';
 
-interface LevelUpModalProps {
+interface ModalProps {
 	title: string;
 	description: string;
 	level?:number
 	close: () => void;
 }
 
-const LevelUpModal:React.FC<LevelUpModalProps> = ({
+const Modal:React.FC<ModalProps> = ({
 	description,
 	title,
 	level,
@@ -35,4 +35,4 @@ const LevelUpModal:React.FC<LevelUpModalProps> = ({
 	);
 }
 
-export default LevelUpModal;
+export default Modal;
