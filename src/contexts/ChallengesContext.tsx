@@ -134,7 +134,7 @@ export const ChallengesProvider:React.FC<ChallengesProviderProps> = ({
 						consiga mais ${experienceToNextLevel}
 						de XP para avançar novamente.`
 					}
-					level={level}
+					contentHeader={level}
 					close={closeModalLevelUp}
 				/>
 			}

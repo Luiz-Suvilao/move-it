@@ -5,20 +5,20 @@ import styles from './Modal.module.css';
 interface ModalProps {
 	title: string;
 	description: string;
-	level?:number
+	contentHeader?:number;
 	close: () => void;
 }
 
 const Modal:React.FC<ModalProps> = ({
 	description,
 	title,
-	level,
+	contentHeader,
 	close
 }) => {
 	return (
 		<div className={ styles.overlay }>
 			<div className={ styles.container }>
-				<header> { level } </header>
+				<header> { contentHeader } </header>
 				<strong> { title } </strong>
 				<p>
 					{ description }
