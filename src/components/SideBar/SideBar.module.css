@@ -1,0 +1,16 @@
+.container {
+	width: 25vh;
+	background-color: var(--white);
+	padding-left: 20px;
+}
+
+.img {
+	margin-top: 2.5rem;
+	width: 48px;
+}
+
+.linkContainer {
+	margin-top: 2.5rem;
+	display: flex;
+	flex-direction: column;
+}

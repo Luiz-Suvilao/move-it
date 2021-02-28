@@ -36,7 +36,6 @@ const Home:React.FC<HomeProps> = ({
 				<title> Início | move.it </title>
 			</Head>
 			<ExperienceBar />
-
 			<CountDownProvider>
 				<section>
 					<div>
