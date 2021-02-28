@@ -64,7 +64,7 @@ const Login = () => {
 						onChange={e => setUserName(e.target.value)}
 						value={ userName }
 						type='text'
-						placeholder='Username'
+						placeholder='Seu usuário'
 					/>
 
 					<button
