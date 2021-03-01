@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 
+import Head from 'next/head';
 import Router from 'next/router'
 
 import Cookies from 'js-cookie';
@@ -33,6 +34,10 @@ const Login = () => {
 
 	return (
 		<div className={ styles.container }>
+			<Head>
+				<title> Login | move.it </title>
+			</Head>
+
 			<div className={ styles.logoContainer }>
 				<img
 					src="/icons/simbolo.svg"
