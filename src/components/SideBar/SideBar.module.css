@@ -1,5 +1,6 @@
 .container {
 	width: 8vw;
+	height: 100vh;
 	background-color: var(--white);
 	padding-left: 20px;
 }
