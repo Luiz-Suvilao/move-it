@@ -5,8 +5,9 @@
 }
 
 .img {
-	margin-top: 2.5rem;
 	width: 48px;
+	margin-left: 40px;
+	margin-top: 2.5rem;
 }
 
 .linkContainer {
@@ -14,3 +15,11 @@
 	display: flex;
 	flex-direction: column;
 }
+
+.linkContainer > nav {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.link { margin-top: 20px; }

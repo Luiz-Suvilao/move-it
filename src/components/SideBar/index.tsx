@@ -7,16 +7,32 @@ import styles from './SideBar.module.css';
 const SideBar:React.FC = () => {
 	return (
 		<aside className={ styles.container }>
-			<nav className={ styles.linkContainer }>
-				<div>
-				<img className={ styles.img } src="/icons/sideBarLogo.svg" alt="Logo na sidebar. Move.it" />
-				<Link href='/'>
-					<a>
-						<img src="/icons/house.svg" alt=""/>
-					</a>
-				</Link>
-				</div>
-			</nav>
+			<div className={ styles.linkContainer }>
+				<nav>
+					<img
+						className={ styles.img } src="/icons/sideBarLogo.svg"
+						alt="Logo na sidebar. Move.it"
+					/>
+
+					<Link href='/'>
+						<a className={ styles.link }>
+							<img
+								src="/icons/house.svg"
+								alt="Imagem de uma casa com link para voltar ao home"
+							/>
+						</a>
+					</Link>
+
+					<Link href='/ranking'>
+						<a className={ styles.link }>
+							<img
+								src="/icons/ranking.svg"
+								alt="Imagem de uma bandeira com link para o ranking"
+							/>
+						</a>
+					</Link>
+				</nav>
+			</div>
 		</aside>
 	);
 }

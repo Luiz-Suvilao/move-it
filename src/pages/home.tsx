@@ -8,6 +8,7 @@ import CountDown from '../components/CountDown';
 import ExperienceBar from '../components/ExperienceBar';
 import Profile from '../components/Profile';
 import ChallengeBox from '../components/ChallengeBox';
+import Layout from '../components/Layout/layout';
 
 import styles from '../styles/home.module.css';
 
@@ -31,25 +32,29 @@ const Home:React.FC<HomeProps> = ({
 		experience={ experience }
 		challengesCompleted={ challengesCompleted }
 	>
-		<div className={ styles.container }>
-			<Head>
-				<title> Início | move.it </title>
-			</Head>
-			<ExperienceBar />
-			<CountDownProvider>
-				<section>
-					<div>
-						<Profile />
-						<CompletedChallenges />
-						<CountDown />
-					</div>
+		<Layout>
+			<div className={ styles.container }>
+				<Head>
+					<title> Início | move.it </title>
+				</Head>
 
-					<div>
-						<ChallengeBox />
-					</div>
-				</section>
-			</CountDownProvider>
-		</div>
+				<ExperienceBar />
+
+				<CountDownProvider>
+					<section>
+						<div>
+							<Profile />
+							<CompletedChallenges />
+							<CountDown />
+						</div>
+
+						<div>
+							<ChallengeBox />
+						</div>
+					</section>
+				</CountDownProvider>
+			</div>
+		</Layout>
 	</ChallengesProvider>
 );
 
