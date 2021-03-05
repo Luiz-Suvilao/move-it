@@ -5,4 +5,23 @@
 	padding: 2.5rem 2rem;
 	display: flex;
 	flex-direction: column;
+	align-items: flex-start;
 }
+
+.container h1 { color: var(--title); }
+
+.competitorGroup {
+	height: 100vh;
+	margin-top: 10vh;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.competitorGroup::-webkit-scrollbar { width: 10px; }
+
+.competitorGroup::-webkit-scrollbar-thumb {
+	background-color: var(--blue);
+	border-radius: 10px;
+}
+
+.competitorGroup::-webkit-scrollbar-track { background-color: var(--gray-line); }
