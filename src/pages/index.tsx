@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import Head from 'next/head';
 import Router from 'next/router'
+import Link from 'next/link';
 
 import Cookies from 'js-cookie';
 
@@ -10,17 +11,27 @@ import { ChallengesContext } from '../contexts/ChallengesContext';
 import styles from '../styles/index.module.css';
 import Modal from '../components/Modal';
 
+import CompetitorController from '../controller/CompetitorController';
+
 const Login = () => {
-	const { openModal, closeModal } = useContext(ChallengesContext);
+	const { closeModal } = useContext(ChallengesContext);
 
 	const [userName, setUserName] = useState('');
 	const [hasError, setHasError] = useState(false);
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		const controller = new CompetitorController();
+
+		controller.getAllCompetitores().then(resp => setData(resp));
+	}, []);
 
 	const goToHome = () => {
-		if (userName === '') {
-			openModal();
+		const userExist = data.some(user => user.name === userName);
+
+		if (!userExist) {
 			setHasError(true);
-			return
+			return;
 		}
 
 		Cookies.set('userName', userName, { path: '/' });
@@ -83,12 +94,17 @@ const Login = () => {
 					</button>
 				</div>
 
+				<Link href='/cadastro'>
+					<a className={ styles.link }>
+						Cadastre-se agora!
+					</a>
+				</Link>
 			</div>
 
 			{hasError && <Modal
 				close={ close }
 				title='Atenção!'
-				description='O campo "Username" não pode ser vazio.'
+				description='O valor inserido não existe. Verifique o campo e tente novamente!'
 			/>}
 		</div>
 	);

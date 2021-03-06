@@ -70,3 +70,13 @@
 }
 
 .wrapperInput button:hover { background-color: var(--light-green); }
+
+.link {
+	color: var(--white);
+	text-decoration: underline;
+	padding-left: 10px;
+}
+
+.link:hover {
+	text-decoration: none;
+}
