@@ -6,27 +6,10 @@
 	background-color: var(--blue);
 }
 
-.logoContainer img { width: 60vh; }
+.logoContainer img { height: 50vh; }
 
 .loginContainer h1 {
 	margin-top: 2.5rem;
-	color: var(--white);
-}
-
-.info {
-	display: flex;
-	margin-top: 2.5rem;
-	align-items: center;
-}
-
-.info img {
-	margin-right: 10px;
-	width: 2vw;
-	height: 4vh;
-}
-
-.info p {
-	font-size: 1rem;
 	color: var(--white);
 }
 
@@ -75,12 +58,7 @@
 
 .wrapperInput button:hover { background-color: var(--light-green); }
 
-.link {
+.messageError {
 	color: var(--white);
-	text-decoration: underline;
 	padding-left: 10px;
-}
-
-.link:hover {
-	text-decoration: none;
 }

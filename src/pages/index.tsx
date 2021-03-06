@@ -66,12 +66,12 @@ const Login = () => {
 
 				<div className={ styles.info }>
 					<img
-						src="/icons/github.svg"
-						alt="Ícone do Github. Simbolizando um login com o mesmo"
+						src="/icons/login.svg"
+						alt="Ícone de login."
 					/>
 
 					<p>
-						Faça login com o seu Github para começar
+						Faça login com o seu usuário
 					</p>
 				</div>
 

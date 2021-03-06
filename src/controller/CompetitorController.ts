@@ -14,6 +14,10 @@ export default class CompetitorController {
 		}
 		return {};
 	}
+
+	saveNewCompetitor(data) {
+		this.competitorService.saveNewCompetitor(data);
+	}
 }
 
 
